@@ -12,6 +12,7 @@
 // mod structs;
 // mod enums;
 mod cli;
+mod optionandresult;
 
 fn main() {
 	//print::run();
@@ -28,4 +29,5 @@ fn main() {
 	//structs::run();
 	//enums::run();
 	cli::run();
+	optionandresult::run();
 }
