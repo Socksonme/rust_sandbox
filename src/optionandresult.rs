@@ -21,8 +21,9 @@ pub fn run() {
         
         println!("{} {}", num, num2);
         
-        // unwrap returns the Some value, or it panics, without providing the error, as it's of type Option::None, instead of 
-        // Result::Err, so it could be considred bad practice
+        // unwrap returns the Ok value, or it panics, provides the Err(value) value, however, this should only be used
+        // when the program cannot continue working after an error.
+        // It is also reccomended to handle the error yourself, or use .expect(), instead of .unwrap()
         let num3: i32 = test2(11).unwrap();
         println!("{}", num3);
 }
@@ -36,16 +37,17 @@ fn test(int: i32) -> Result<i32, String> {
         _ => return Err(String::from("Invalid number"))
     }
 }
-// Option can either return Option::None or Option::Some(T)
-fn test2(int: i32) -> Option<i32> {
+// Options should be used when you are expecting nothing are something,
+// such as some kind of a search/find command 
+fn test2(int: i32) -> Result<i32, String> {
     match int {
         // Match guard
         // x is binded to the value and then is checked if it matches the match guard
-        x if x > 0 && x <= 100 => return Some(x * 2), // if x > 0 && x <= 100 - match guard
+        x if x > 0 && x <= 100 => return Ok(x * 2), // if x > 0 && x <= 100 - match guard
 
         // You can also bind a pattern to a name with '@', so it'd be something like:
-        // x @ 0..=100 => return Some(x * 2),
+        // x @ 0..=100 => return Ok(x * 2),
 
-        _ => return None
+        _ => return Err("Invalid number".to_string())
     }
 }
