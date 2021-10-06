@@ -32,9 +32,9 @@ pub fn run() {
 fn test(int: i32) -> Result<i32, String> {
     match int {
         // Match an inclusive range from 0 to 100 and return the number
-        0 ..= 100 => return Ok(int),
+        0 ..= 100 => Ok(int),
         // Returns an error with a string explaining it
-        _ => return Err(String::from("Invalid number"))
+        _ => Err(String::from("Invalid number"))
     }
 }
 // Options should be used when you are expecting nothing are something,
@@ -43,11 +43,11 @@ fn test2(int: i32) -> Result<i32, String> {
     match int {
         // Match guard
         // x is binded to the value and then is checked if it matches the match guard
-        x if x > 0 && x <= 100 => return Ok(x * 2), // if x > 0 && x <= 100 - match guard
+        x if x > 0 && x <= 100 => Ok(x * 2), // if x > 0 && x <= 100 - match guard
 
         // You can also bind a pattern to a name with '@', so it'd be something like:
         // x @ 0..=100 => return Ok(x * 2),
 
-        _ => return Err("Invalid number".to_string())
+        _ => Err("Invalid number".to_string())
     }
 }
