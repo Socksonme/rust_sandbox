@@ -1,5 +1,23 @@
 // Enums are types which have a few definitive values
 
+enum IpAddrKind {
+    V4(u8, u8, u8, u8),
+    V6(String)
+}
+
+enum Message {
+    Quit,
+    Move {x: i32, y: i32},
+    Write(String),
+    ChangeColour(u8, u8, u8)
+}
+
+impl Message {
+    fn some_function() {
+        println!("Random message");
+    }
+}
+
 enum Movement {
     // Variants
     Up,
@@ -23,6 +41,12 @@ fn move_avatar (m: &Movement) {
 }
 
 pub fn run() {
+
+    let four: IpAddrKind = IpAddrKind::V4(127, 122, 10, 2);
+    let six: IpAddrKind = IpAddrKind::V6("aaa".to_string());
+
+    let localhost: IpAddrKind = IpAddrKind::V4(127, 0, 0, 1);
+
     let movement1: Movement = Movement::Up;
     let movement2: Movement = Movement::Down;
     let movement3: Movement = Movement::Left;

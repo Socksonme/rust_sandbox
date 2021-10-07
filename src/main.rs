@@ -10,7 +10,7 @@
 // mod functions;
 // mod pointer_ref;
 // mod structs;
-// mod enums;
+mod enums;
 mod cli;
 mod optionandresult;
 
@@ -28,6 +28,7 @@ fn main() {
 	//pointer_ref::run();
 	//structs::run();
 	//enums::run();
+	enums::run();
 	cli::run();
 	optionandresult::run();
 }
